@@ -1,0 +1,82 @@
+#/* vim: set filetype=sh : */
+# Bash predefined text colors
+# dimio (dimio.org)
+# http://dimio.org/bash-born-again-shell-obolochka-komandnoj-stroki.html
+# VERSION='0.06'
+#
+# Examples:
+# echo -e "${txtgrn}this is green text${txtrst}"
+# echo -e "${txtgrn}${bakred}this is green text on red background${txtrst}"
+# Green hostname on bash prompt line:
+# PS1='\u@'${txtgrn}'\h'${txtrst}
+
+if [[ ${BASH_COLOR_MODE} == "tput" && -x $( type -p tput ) ]]; then
+    hash tput
+
+    # Normal
+    txtblk=$( tput setaf 0 ) # Black
+    txtred=$( tput setaf 1 ) # Red
+    txtgrn=$( tput setaf 2 ) # Green
+    txtylw=$( tput setaf 3 ) # Yellow
+    txtblu=$( tput setaf 4 ) # Blue
+    txtpur=$( tput setaf 5 ) # Purple
+    txtcyn=$( tput setaf 6 ) # Cyan
+    txtwht=$( tput setaf 7 ) # White
+
+    # Background color
+    bakblk=$( tput setab 0 )  # Black
+    bakred=$( tput setab 0 )  # Red
+    bakgrn=$( tput setab 0 )  # Green
+    bakylw=$( tput setab 0 )  # Yellow
+    bakblu=$( tput setab 0 )  # Blue
+    bakpur=$( tput setab 0 )  # Purple
+    bakcyn=$( tput setab 0 )  # Cyan
+    bakwht=$( tput setab 0 )  # White
+
+    # Reset text formatting
+    txtrst=$( tput sgr 0 ) # Text reset
+elif [[ ${BASH_COLOR_MODE} == "bash" ]]; then
+    #\e == escape symbol (\033)
+    # Normal
+    txtblk='\e[0;30m' # Black
+    txtred='\e[0;31m' # Red
+    txtgrn='\e[0;32m' # Green
+    txtylw='\e[0;33m' # Yellow
+    txtblu='\e[0;34m' # Blue
+    txtpur='\e[0;35m' # Purple
+    txtcyn='\e[0;36m' # Cyan
+    txtwht='\e[0;37m' # White
+
+    # Bold
+    bldblk='\e[1;30m' # Black
+    bldred='\e[1;31m' # Red
+    bldgrn='\e[1;32m' # Green
+    bldylw='\e[1;33m' # Yellow
+    bldblu='\e[1;34m' # Blue
+    bldpur='\e[1;35m' # Purple
+    bldcyn='\e[1;36m' # Cyan
+    bldwht='\e[1;37m' # White
+
+    # Underlined
+    unkblk='\e[4;30m' # Black
+    undred='\e[4;31m' # Red
+    undgrn='\e[4;32m' # Green
+    undylw='\e[4;33m' # Yellow
+    undblu='\e[4;34m' # Blue
+    undpur='\e[4;35m' # Purple
+    undcyn='\e[4;36m' # Cyan
+    undwht='\e[4;37m' # White
+
+    # Background color
+    bakblk='\e[40m'   # Black
+    bakred='\e[41m'   # Red
+    bakgrn='\e[42m'   # Green
+    bakylw='\e[43m'   # Yellow
+    bakblu='\e[44m'   # Blue
+    bakpur='\e[45m'   # Purple
+    bakcyn='\e[46m'   # Cyan
+    bakwht='\e[47m'   # White
+
+    # Reset text formatting
+    txtrst='\e[0m'    # Text reset
+fi

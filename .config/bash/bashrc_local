@@ -1,0 +1,3 @@
+#/* vim: set filetype=sh : */
+PS1_host_color=${txtylw}
+export SCREEN_hostcolor=g
