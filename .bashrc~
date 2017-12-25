@@ -93,4 +93,4 @@ alias rsync='rsync -P'
 # df - вывод в человекопонятном виде, выводим типы ФС
 alias df='df --human-readable --print-type'
 
-alias iptablesL='iptables -L -nv --line-number'
+alias iptablesL = 'iptables -L -nv --line-number'
